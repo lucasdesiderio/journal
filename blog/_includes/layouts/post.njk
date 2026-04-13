@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+---
+<article class="content-card">
+  <header class="content-header">
+    <p class="eyebrow">Post</p>
+    <h1>{{ title }}</h1>
+    {% if summary %}
+      <p class="lede">{{ summary }}</p>
+    {% endif %}
+    <div class="meta-row">
+      {% if date %}
+        <span>Published {{ date | readableDate }}</span>
+      {% endif %}
+      {% if updated %}
+        <span>Updated {{ updated | readableDate }}</span>
+      {% endif %}
+    </div>
+    {% if tags and tags.length %}
+      <ul class="tag-list" aria-label="Tags">
+        {% for tag in tags %}
+          <li><a class="tag-pill" href="{{ tag | tagUrl }}">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+</article>

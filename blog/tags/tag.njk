@@ -1,0 +1,45 @@
+---
+pagination:
+  data: collections.tagGroups
+  size: 1
+  alias: tagGroup
+permalink: "/tags/{{ tagGroup.slug }}/index.html"
+eleventyComputed:
+  title: "Tag: {{ tagGroup.tag }}"
+  summary: "{{ tagGroup.posts.length }} published post{% if tagGroup.posts.length !== 1 %}s{% endif %} tagged {{ tagGroup.tag }}."
+---
+<section class="hero">
+  <p class="eyebrow">Tag</p>
+  <h1>#{{ tagGroup.tag }}</h1>
+  <p class="lede">
+    {{ tagGroup.posts.length }} published post{% if tagGroup.posts.length !== 1 %}s{% endif %} share this tag.
+  </p>
+  <p><a href="/tags/">View all tags</a></p>
+</section>
+
+<section class="content-card">
+  <div class="section-heading">
+    <h2>Posts tagged #{{ tagGroup.tag }}</h2>
+    <p>Newest posts first.</p>
+  </div>
+  <ul class="post-list">
+    {% for post in tagGroup.posts %}
+      <li>
+        <article>
+          <p class="meta-label">{{ post.date | readableDate }}</p>
+          <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+          {% if post.data.summary %}
+            <p>{{ post.data.summary }}</p>
+          {% endif %}
+          {% if post.data.tags and post.data.tags.length %}
+            <ul class="tag-list" aria-label="Related tags">
+              {% for tag in post.data.tags %}
+                <li><a class="tag-pill" href="{{ tag | tagUrl }}">{{ tag }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </article>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

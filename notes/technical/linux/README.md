@@ -7,3 +7,6 @@ yum list installed | grep reponame
 
 ## Remove a package
 yum remove
+
+## Install custom URL package
+yum localinstall <URL>

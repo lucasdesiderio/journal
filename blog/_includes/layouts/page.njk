@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+---
+<article class="content-card">
+  <header class="content-header">
+    <p class="eyebrow">Page</p>
+    <h1>{{ title }}</h1>
+    {% if summary %}
+      <p class="lede">{{ summary }}</p>
+    {% endif %}
+    {% if updated %}
+      <div class="meta-row">
+        <span>Updated {{ updated | readableDate }}</span>
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+</article>

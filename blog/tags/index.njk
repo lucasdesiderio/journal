@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+title: Tags
+summary: Browse published posts by topic.
+---
+<section class="hero">
+  <p class="eyebrow">Tags</p>
+  <h1>Explore posts by topic.</h1>
+  <p class="lede">
+    Each tag groups related writing so it is easier to continue reading around the same subject.
+  </p>
+</section>
+
+<section class="content-card">
+  <div class="section-heading">
+    <h2>All tags</h2>
+    <p>Grouped from published posts.</p>
+  </div>
+  {% if collections.tagGroups.length %}
+    <ul class="tag-directory">
+      {% for tagGroup in collections.tagGroups %}
+        <li>
+          <a class="tag-directory-link" href="{{ tagGroup.tag | tagUrl }}">
+            <span>#{{ tagGroup.tag }}</span>
+            <span>{{ tagGroup.posts.length }} post{% if tagGroup.posts.length !== 1 %}s{% endif %}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No tags yet.</p>
+  {% endif %}
+</section>

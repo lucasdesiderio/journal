@@ -1,0 +1,14 @@
+{
+  "name": "journal",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Markdown-first journal and blog powered by Eleventy.",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

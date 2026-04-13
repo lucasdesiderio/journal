@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if title %}{{ title }} | {% endif %}Journal</title>
+    <meta name="description" content="{{ summary or 'Thoughtful writing and technical notes.' }}">
+    <link rel="stylesheet" href="/assets/site.css">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="site-title" href="/">
+          <span class="site-title-mark">Journal</span>
+          <span class="site-title-subtitle">Thoughts, notes, and technical writing</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">Posts</a>
+          <a href="/tags/">Tags</a>
+          <a href="/about/">About</a>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        {{ content | safe }}
+      </main>
+
+      <footer class="site-footer">
+        <p>Built for clear writing and comfortable reading.</p>
+      </footer>
+    </div>
+  </body>
+</html>
